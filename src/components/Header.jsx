@@ -5,7 +5,7 @@ export default function Header(props) {
       <div className="header">
         <h1>
           {user == "bouncer"
-            ? "Scan for entry"
+            ? "Scan to entry"
             : user == "bartender"
             ? "scan to increment raffle tickets"
             : null}
