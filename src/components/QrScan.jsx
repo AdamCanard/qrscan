@@ -55,7 +55,11 @@ function QrScan(props) {
       case 200:
         console.log("Success! (200)");
         props.setInfo(data.data);
-        props.setScanSuccess(true);
+        if (data.data == "Ticket has already entered") {
+          props.setScanSuccess(false);
+        } else {
+          props.setScanSuccess(true);
+        }
         //setTimeout(resetScanner, 500);
         break;
       case 404:
