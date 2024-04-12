@@ -8,12 +8,12 @@ function QrScan(props) {
   const [camEnabled, setCamEnabled] = useState(true);
   // called by setTimeout to show scanner again
   const resetScanner = () => {
-    setCamEnabled(true);
-    props.setScanSuccess(null);
+    //setCamEnabled(true);
+    //props.setScanSuccess(null);z
   };
 
   const sendScan = useDebouncedCallback(async (decodedText) => {
-    setCamEnabled(false);
+    //setCamEnabled(false);
     const ticketId = decodedText.split("/")[decodedText.split("/").length - 1];
     console.log(decodedText);
     console.log(ticketId);
@@ -22,6 +22,7 @@ function QrScan(props) {
       // apiUrl + ticketId for testing
       let formData = new FormData();
       formData.append("auth", props.user);
+      // fetch 'https://raizapalooza.com/api/tic/' + ticketId in Prod
       let response = await fetch(apiUrl + ticketId, {
         method: "POST",
         headers: {
@@ -37,7 +38,7 @@ function QrScan(props) {
       console.error(`Ran into an error contacting the API: ${e}`);
       props.setScanSuccess(false);
       props.setInfo("Error with the API");
-      setTimeout(resetScanner, 1000);
+      //setTimeout(resetScanner, 1000);
     }
   }, 1000);
 
@@ -55,19 +56,19 @@ function QrScan(props) {
         console.log("Success! (200)");
         props.setInfo(data.data);
         props.setScanSuccess(true);
-        setTimeout(resetScanner, 500);
+        //setTimeout(resetScanner, 500);
         break;
       case 404:
         console.log("Error! (500)");
         props.setScanSuccess(false);
         props.setInfo(data.data);
-        setTimeout(resetScanner, 500);
+        //setTimeout(resetScanner, 500);
         break;
       default:
         console.log("Something went wrong.");
         props.setInfo("Something went wrong");
         props.setScanSuccess(false);
-        setTimeout(resetScanner, 500);
+        //setTimeout(resetScanner, 500);
         break;
     }
   };

@@ -3,13 +3,7 @@ export default function Header(props) {
   return (
     <>
       <div className="header">
-        <h1>
-          {user == "bouncer"
-            ? "Scan to entry"
-            : user == "bartender"
-            ? "scan to increment raffle tickets"
-            : null}
-        </h1>
+        <h1 className="text-4xl text-center text-[#fffdcf] font-bold p-5">{user=='bouncer'?"entry scan":user=='bartender'?"scan to increment raffle tickets":null}</h1>
       </div>
     </>
   );

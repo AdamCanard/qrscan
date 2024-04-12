@@ -1,8 +1,8 @@
 import "./App.css";
+import "./index.css";
 import ScanPage from "./components/ScanPage";
 import Login from "./components/Login";
 import Header from "./components/Header";
-import "./index.css";
 import { useState, createContext } from "react";
 
 export const UserContext = createContext(null);
@@ -33,7 +33,7 @@ function App() {
   return (
     // logged in ? display scanpage : Login.jsx
     <UserContext.Provider value={{ loggedIn, user, setLoggedIn, setUser }}>
-      <div className="bg-stone-800">
+      <div className="bg-[#121212]">
         {loggedIn ? (
           <>
             <div className="w-[100vw] h-[100vh] flex flex-col justify-start items-center">

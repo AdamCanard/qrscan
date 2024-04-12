@@ -3,6 +3,7 @@ import QrScan from "../components/QrScan";
 import Header from "../components/Header";
 import Login from "../components/Login";
 import { UserContext } from "../App";
+import '../../src/App.css';
 
 export default function ScanPage() {
   const { user, setUser } = useContext(UserContext);
@@ -23,15 +24,15 @@ export default function ScanPage() {
     // if scanSuccess != true/false or user != bartender/bouncer, then return to Login page
     <>
       {scanSuccess === true ? (
-        <div className="w-[100vw] fixed h-[100vh] bg-green-600 flex flex-col justify-center items-center z-10">
+        <div className="w-[100vw] fixed h-[100vh] bg-[#00ff85] flex flex-col justify-center items-center z-10" onClick={() => setScanSuccess(null)}>
           <div className="w-[50%] h-[50%] flex flex-col justify-center items-center">
-            <p>{info}</p>
+            <p className="text-2xl text-center text-[#00ff85] font-bold bg-[#4041d1] w-[80vw] p-5">{info}</p>
           </div>
         </div>
       ) : scanSuccess === false ? (
-        <div className="w-[100vw] fixed h-[100vh] bg-red-600 flex flex-col justify-center items-center z-10">
+        <div className="w-[100vw] fixed h-[100vh] bg-[#ffff35] flex flex-col justify-center items-center z-10" onClick={() => setScanSuccess(null)}>
           <div className="w-[50%] h-[50%] flex flex-col justify-center items-center">
-            <p>{info}</p>
+            <p className="text-2xl text-center text-[#ffff35] font-bold bg-[#4041d1] w-[80vw] p-5">{info}</p>
           </div>
         </div>
       ) : null}
