@@ -23,7 +23,8 @@ function QrScan(props) {
       let formData = new FormData();
       formData.append("auth", props.user);
       // fetch 'https://raizapalooza.com/api/tic/' + ticketId in Prod
-      let response = await fetch(apiUrl + ticketId, {
+      // apiUrl + ticketID for testing
+      let response = await fetch(decodedText, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -37,7 +38,7 @@ function QrScan(props) {
     } catch (e) {
       console.error(`Ran into an error contacting the API: ${e}`);
       props.setScanSuccess(false);
-      props.setInfo("Error with the API");
+      props.setInfo("Error with the API" + e);
       //setTimeout(resetScanner, 1000);
     }
   }, 1000);
